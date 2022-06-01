@@ -30,3 +30,9 @@ Please note the path to the Dart SDK:
   /opt/homebrew/opt/dart/libexec
 
 ```
+
+### Run App
+
+```
+flutter run
+```
