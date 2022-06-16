@@ -1,0 +1,8 @@
+package com.arunabhdas.vivaldi
+
+data class Todo(
+    val completed: Boolean,
+    val id: Int,
+    val title: String,
+    val userId: Int
+)
