@@ -6,4 +6,13 @@
     </style>
 
     <style name="Theme.Vivaldi" parent="Base.Theme.Vivaldi" />
+
+    <style name="Theme.Vivaldi.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Vivaldi.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Vivaldi.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
