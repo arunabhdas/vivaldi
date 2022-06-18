@@ -79,4 +79,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    suspend fun displayStatus(): String {
+        return "Waiting for rx"
+    }
+
 }

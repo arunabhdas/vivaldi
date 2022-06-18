@@ -2,6 +2,7 @@ package com.arunabhdas.vivaldi
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -11,7 +12,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.arunabhdas.vivaldi.databinding.ActivityDebugBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 
 class LandingActivity : AppCompatActivity() {
 
@@ -42,6 +49,22 @@ class LandingActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val flow = flow<String> {
+            for (i in 1..10) {
+                emit("Sending message")
+                delay(1000L)
+            }
+        }
+
+        lifecycleScope.launch {
+        // lifecycleScope.launch {
+            flow.collect {
+                android.util.Log.d(TAG, it)
+            }
+        }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
