@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.arunabhdas.vivaldi.databinding.ActivityDebugBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
@@ -52,15 +53,16 @@ class LandingActivity : AppCompatActivity() {
 
         val flow = flow<String> {
             for (i in 1..10) {
-                emit("Sending message")
+                emit("Sending message" + i.toString())
                 delay(1000L)
             }
         }
 
         lifecycleScope.launch {
         // lifecycleScope.launch {
-            flow.collect {
+            flow.buffer().collect {
                 android.util.Log.d(TAG, it)
+                delay(2000L)
             }
         }
 
